@@ -1,0 +1,88 @@
+/* Custom Cursor Styles */
+body {
+    cursor: none; /* Hide default cursor */
+    background-color: black;
+    color: #e5e5e5;
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    body {
+        cursor: auto;
+    }
+    .custom-cursor {
+        display: none;
+    }
+}
+
+.custom-cursor-outer {
+    position: fixed;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid #22d3ee;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    transition: transform 0.1s ease-out;
+    will-change: left, top;
+}
+
+.custom-cursor-inner {
+    position: fixed;
+    width: 0.375rem;
+    height: 0.375rem;
+    background-color: #22d3ee;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    box-shadow: 0 0 10px #22d3ee;
+    will-change: left, top;
+}
+
+/* Reveal Animation Base Classes */
+.reveal {
+    opacity: 0;
+    transition: all 0.7s cubic-bezier(0.17, 0.55, 0.55, 1);
+    filter: blur(4px);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+    filter: blur(0);
+}
+
+/* Directional Transforms for Reveal */
+.reveal-up { transform: translateY(5rem); }
+.reveal-down { transform: translateY(-5rem); }
+.reveal-left { transform: translateX(5rem); }
+.reveal-right { transform: translateX(-5rem); }
+.reveal-scale { transform: scale(0.9); }
+
+/* Tilt Effect Utilities */
+.transform-style-3d {
+    transform-style: preserve-3d;
+}
+
+/* Background Utilities */
+.bg-grid {
+    background-image: linear-gradient(rgba(30,30,30,0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,30,30,0.2) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* Loading Screen Transition */
+#loader {
+    transition: opacity 1s ease-out, visibility 1s;
+}
+#content {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+#content.visible {
+    opacity: 1;
+}
